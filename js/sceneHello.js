@@ -22,7 +22,7 @@ window.addEventListener("resize", ()=>{
 
 
 var geometry = new THREE.SphereGeometry(
-  1, //radius
+  .5, //radius
   10, //width
   10 //heigth
 )
@@ -31,4 +31,9 @@ var material = new THREE.MeshLambertMaterial({color: 0xed4});
 var mesh = new THREE.Mesh(geometry, material);
 
 scene.add(mesh);
+
+var light = new THREE.PointLight(0xFFFFFF, 1, 500); //color, intensity,distance
+light.position.set(10,0,25);
+scene.add(light);
+
 renderer.render(scene, camera);
