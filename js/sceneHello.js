@@ -6,6 +6,14 @@ var camera  = new THREE.PerspectiveCamera(
   1000
 );
 
-var renderer = new THREE.webGLRenderer({antialias:true});
+var renderer = new THREE.WebGLRenderer({antialias:true});
 renderer.setClearColor("#e5e5e5");//background setClearColor
 renderer.setSize(window.innerWidth, window.innerHeight);
+
+document.body.appendChild(renderer.domElement); //Adds the renderer to the DOM
+
+window.addEventListener("resize", ()=>{
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectMatrix();
+})
