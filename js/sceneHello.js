@@ -5,6 +5,7 @@ var camera  = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
+camera.position.z = 5;
 
 var renderer = new THREE.WebGLRenderer({antialias:true});
 renderer.setClearColor("#e5e5e5");//background setClearColor
@@ -18,7 +19,7 @@ window.addEventListener("resize", ()=>{
   camera.updateProjectionMatrix();
 });
 
-renderer.render(scene, camera);
+
 
 var geometry = new THREE.SphereGeometry(
   1, //radius
@@ -30,3 +31,4 @@ var material = new THREE.MeshLambertMaterial({color: 0xed4});
 var mesh = new THREE.Mesh(geometry, material);
 
 scene.add(mesh);
+renderer.render(scene, camera);
