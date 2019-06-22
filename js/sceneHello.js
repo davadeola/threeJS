@@ -50,8 +50,12 @@ var render = ()=>{
   requestAnimationFrame(render);//creates a loop to render the screen everytime the screen size is changed (60fps)
 
   //roatate the object everytime the render() is called
-  mesh.rotation.x += 0.01;
-
+  // mesh.rotation.x += 0.01;
+  // mesh.rotation.y+=0.1;
+  // mesh.scale.x -=0.01;
   renderer.render(scene, camera);
 }
 render();
+
+this.tl = new TimelineMax().delay(.3);
+this.tl.to(this.mesh.scale, 1, {x:2, ease: Expo.easeOut})
