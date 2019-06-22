@@ -20,12 +20,11 @@ window.addEventListener("resize", ()=>{
 });
 
 
+//creates a sphere
+//var geometry = new THREE.SphereGeometry(.5,10, 100)
 
-var geometry = new THREE.SphereGeometry(
-  .5, //radius
-  10, //width
-  10 //heigth
-)
+//creates a box
+var geometry = new THREE.BoxGeometry(1,1,1); //x, y, z
 
 var material = new THREE.MeshLambertMaterial({color: 0xed4});
 var mesh = new THREE.Mesh(geometry, material);
