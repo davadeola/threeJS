@@ -25,9 +25,11 @@ window.addEventListener("resize", ()=>{
 
 //creates a box
 var geometry = new THREE.BoxGeometry(1,1,1); //x, y, z
-
 var material = new THREE.MeshLambertMaterial({color: 0xed4});
+
 var mesh = new THREE.Mesh(geometry, material);
+//changes the perspective of the view of the object
+mesh.position.x =1;
 
 scene.add(mesh);
 
