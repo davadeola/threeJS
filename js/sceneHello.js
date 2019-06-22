@@ -31,10 +31,12 @@ var mesh = new THREE.Mesh(geometry, material);
 
 //changes the perspective of the view of the object
 mesh.position.x =2;
-mesh.position.set(2, 2, -1); //x, y,z
+mesh.position.set(1, 1, 0); //x, y,z
 
-mesh.rotation.set(45, 45, 0); //x,y,z
-mesh.scale.set(1, 2, 1);
+// mesh.rotation.set(45, 45, 0); //x,y,z
+// mesh.scale.set(1, 2, 1);
+
+
 
 
 scene.add(mesh);
@@ -46,6 +48,10 @@ scene.add(light);
 //fixes the distortion to the object on resizing the screen
 var render = ()=>{
   requestAnimationFrame(render);//creates a loop to render the screen everytime the screen size is changed (60fps)
+
+  //roatate the object everytime the render() is called
+  mesh.rotation.x += 0.01;
+
   renderer.render(scene, camera);
 }
 render();
