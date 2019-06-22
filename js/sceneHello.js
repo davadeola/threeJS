@@ -57,8 +57,12 @@ var render = ()=>{
 }
 render();
 
-this.tl = new TimelineMax().delay(.3);
+this.tl = new TimelineMax({paused: true});
 this.tl.to(this.mesh.scale, 1, {x:3, ease: Expo.easeOut});
 this.tl.to(this.mesh.scale, .5, {x:1, ease: Expo.easeOut});
 this.tl.to(this.mesh.position, .5, {x:2, ease: Expo.easeOut});
 this.tl.to(this.mesh.rotation, .5, {y:Math.PI*.5, ease: Expo.easeOut}, "-=1.5");
+
+document.body.addEventListener("click", ()=>{
+  this.tl.play();
+})
