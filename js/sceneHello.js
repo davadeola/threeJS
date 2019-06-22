@@ -28,6 +28,7 @@ var geometry = new THREE.BoxGeometry(1,1,1); //x, y, z
 var material = new THREE.MeshLambertMaterial({color: 0xed4});
 
 var mesh = new THREE.Mesh(geometry, material);
+
 //changes the perspective of the view of the object
 mesh.position.x =1;
 
@@ -37,4 +38,8 @@ var light = new THREE.PointLight(0xFFFFFF, 1, 500); //color, intensity,distance
 light.position.set(10,0,25);
 scene.add(light);
 
-renderer.render(scene, camera);
+var render = ()=>{
+  requestAnimationFrame(render);
+  renderer.render(scene, camera);
+}
+render();
