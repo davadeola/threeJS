@@ -69,18 +69,23 @@ var onMouseMove =(event)=>{
   var intersects = raycaster.intersectObjects(scene.children, true);
   console.log(intersects);
   for (var i = 0; i < intersects.length; i++) {
-    intersects[i].object.material.color.set(0x45df34);
+    //intersects[i] refers to the object which the mouse interacts with
+    this.tl = new TimelineMax();
+    this.tl.to(intersects[i].object.scale, 1, {x:3, ease: Expo.easeOut});
+    this.tl.to(intersects[i].object.scale, .5, {x:1, ease: Expo.easeOut});
+    this.tl.to(intersects[i].object.position, .5, {x:2, ease: Expo.easeOut});
+    this.tl.to(intersects[i].object.rotation, .5, {y:Math.PI*.5, ease: Expo.easeOut}, "-=1.5");
   }
 
 }
 
 render();
-
-this.tl = new TimelineMax({paused: true});
-this.tl.to(this.mesh.scale, 1, {x:3, ease: Expo.easeOut});
-this.tl.to(this.mesh.scale, .5, {x:1, ease: Expo.easeOut});
-this.tl.to(this.mesh.position, .5, {x:2, ease: Expo.easeOut});
-this.tl.to(this.mesh.rotation, .5, {y:Math.PI*.5, ease: Expo.easeOut}, "-=1.5");
+//creates an animation on the mesh
+// this.tl = new TimelineMax({paused: true});
+// this.tl.to(this.mesh.scale, 1, {x:3, ease: Expo.easeOut});
+// this.tl.to(this.mesh.scale, .5, {x:1, ease: Expo.easeOut});
+// this.tl.to(this.mesh.position, .5, {x:2, ease: Expo.easeOut});
+// this.tl.to(this.mesh.rotation, .5, {y:Math.PI*.5, ease: Expo.easeOut}, "-=1.5");
 
 //adds a click trigger on the body for the animation
 window.addEventListener("click", onMouseMove);
