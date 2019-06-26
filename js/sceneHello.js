@@ -13,11 +13,15 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 document.body.appendChild(renderer.domElement); //Adds the renderer to the DOM
 
+//changes the size of the renderer with resize action
 window.addEventListener("resize", ()=>{
   renderer.setSize(window.innerWidth, window.innerHeight);
   camera.aspect = window.innerWidth/window.innerHeight;
   camera.updateProjectionMatrix();
 });
+
+var raycaster = new THREE.Raycaster();
+var mouse = new THREE.Vector2();
 
 
 //creates a sphere
@@ -55,6 +59,21 @@ var render = ()=>{
   // mesh.scale.x -=0.01;
   renderer.render(scene, camera);
 }
+var onMouseMove =(event)=>{
+  event.preventDefault();
+
+  mouse.x = (event.clientX / window.innerWidth)*2 -1;
+  mouse.y = -(event.clientY / window.innerHeight)*2+1;
+
+  raycaster.setFromCamera(mouse, camera);
+  var intersects = raycaster.intersectObjects(scene.children, true);
+  console.log(intersects);
+  for (var i = 0; i < intersects.length; i++) {
+    intersects[i].object.material.color.set(0x45df34);
+  }
+
+}
+
 render();
 
 this.tl = new TimelineMax({paused: true});
@@ -63,6 +82,5 @@ this.tl.to(this.mesh.scale, .5, {x:1, ease: Expo.easeOut});
 this.tl.to(this.mesh.position, .5, {x:2, ease: Expo.easeOut});
 this.tl.to(this.mesh.rotation, .5, {y:Math.PI*.5, ease: Expo.easeOut}, "-=1.5");
 
-document.body.addEventListener("click", ()=>{
-  this.tl.play();
-})
+//adds a click trigger on the body for the animation
+window.addEventListener("mousemove", onMouseMove);
