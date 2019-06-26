@@ -41,13 +41,13 @@ for (var i = 0; i <15; i++) {
   meshX+=1;
 }
 
-var light = new THREE.PointLight(0xFFFFFF, 1, 500); //color, intensity,distance
-light.position.set(10,0,25);
+var light = new THREE.PointLight(0xFFFFFF, 1, 1000); //color, intensity,distance
+light.position.set(0,0,0);
 scene.add(light);
 
 
-var light = new THREE.PointLight(0xFFFFFF, 1, 500); //color, intensity,distance
-light.position.set(10,0,25);
+var light = new THREE.PointLight(0xFFFFFF, 1, 1000); //color, intensity,distance
+light.position.set(0,0,25);
 scene.add(light);
 
 //fixes the distortion to the object on resizing the screen
