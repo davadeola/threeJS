@@ -45,6 +45,11 @@ var light = new THREE.PointLight(0xFFFFFF, 1, 500); //color, intensity,distance
 light.position.set(10,0,25);
 scene.add(light);
 
+
+var light = new THREE.PointLight(0xFFFFFF, 1, 500); //color, intensity,distance
+light.position.set(10,0,25);
+scene.add(light);
+
 //fixes the distortion to the object on resizing the screen
 var render = ()=>{
   requestAnimationFrame(render);//creates a loop to render the screen everytime the screen size is changed/refreshes (60fps)
