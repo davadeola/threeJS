@@ -83,4 +83,4 @@ this.tl.to(this.mesh.position, .5, {x:2, ease: Expo.easeOut});
 this.tl.to(this.mesh.rotation, .5, {y:Math.PI*.5, ease: Expo.easeOut}, "-=1.5");
 
 //adds a click trigger on the body for the animation
-window.addEventListener("mousemove", onMouseMove);
+window.addEventListener("click", onMouseMove);
