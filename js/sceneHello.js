@@ -30,19 +30,21 @@ var mouse = new THREE.Vector2();
 //creates a box
 var geometry = new THREE.BoxGeometry(1,1,1); //x, y, z
 var material = new THREE.MeshLambertMaterial({color: 0xed4});
-
 var mesh = new THREE.Mesh(geometry, material);
 
 //changes the perspective of the view of the object
-mesh.position.x =2;
-mesh.position.set(1, 1, 0); //x, y,z
+//mesh.position.x =2;
+//mesh.position.set(1, 1, 0); //x, y,z
 
 // mesh.rotation.set(45, 45, 0); //x,y,z
 // mesh.scale.set(1, 2, 1);
+scene.add(mesh);
 
 
-
-
+var geometry = new THREE.BoxGeometry(1,1,1); //x, y, z
+var material = new THREE.MeshLambertMaterial({color: 0xed4});
+var mesh = new THREE.Mesh(geometry, material);
+mesh.position.y= 2;
 scene.add(mesh);
 
 var light = new THREE.PointLight(0xFFFFFF, 1, 500); //color, intensity,distance
