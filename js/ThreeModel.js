@@ -1,7 +1,7 @@
 //DO BASIC SET-UP FOR THE PAGE
 let scene, camera, renderer;
 var init=()=>{
-  scene.new THREE.Scene();
+  scene =new THREE.Scene();
   scene.background = new THREE.Color(0xfdd);
 
   camera = new THREE.PerspectiveCamera(40, window.innerWidth/window.innerHeight, 1, 5000);
@@ -13,4 +13,11 @@ var init=()=>{
   document.body.appendChild(renderer.domElement);
 }
 
-//
+//Call the THREE.JS GTF LOADER class
+let loader= new THREE.GLTFLoader();
+loader.load('../merc/scene.gltf', (gltf)=>{
+  scene.add(gltf.scene);
+  renderer.render(scene, camera);
+})
+
+init();
