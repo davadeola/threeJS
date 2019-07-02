@@ -10,6 +10,11 @@ var init=()=>{
   camera.position.y=100;
   camera.position.z=1000;
 
+  //ADDING CONTROLS FOR THE ORBIT CAMERA
+  controls = new THREE.OrbitControls(camera);
+  controls.addEventListener('change', renderer);
+
+  //ADDING LIGHTING TO THE IMAGE
   var hLight= new THREE.AmbientLight(0x404040, 100);
   scene.add(hLight);
 
@@ -34,10 +39,12 @@ var init=()=>{
   light.position.set(-500,300,0);
   scene.add(light4);
 
+  
   var renderer= new THREE.WebGLRenderer({antialias: true});
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
+  //Call the THREE.JS GTF LOADER class
   let loader= new THREE.GLTFLoader();
   loader.load('./../scene.gltf', function(gltf){
     //get the car
@@ -45,10 +52,17 @@ var init=()=>{
 
     car.scale.set(0.5, 0.5, 0.5);
     scene.add(gltf.scene);
-    renderer.render(scene, camera);
+    // renderer.render(scene, camera);
+    animate();
   });
+
+  //rerenders the image on change on camera position
+  var animate =()=>{
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+  }
 }
 
-//Call the THREE.JS GTF LOADER class
+
 
 init();
