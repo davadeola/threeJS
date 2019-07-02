@@ -13,6 +13,11 @@ var init=()=>{
   var hLight= new THREE.AmbientLight(0x404040, 100);
   scene.add(hLight);
 
+  directionalLight = new THREE.DirectionalLight(0xFFFFFF, 100);
+  directionalLight.position.set(0,1,0);
+  directionalLight.castShadow =true;
+  scene.add(directionalLight);
+
   var renderer= new THREE.WebGLRenderer({antialias: true});
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
